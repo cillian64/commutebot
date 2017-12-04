@@ -37,7 +37,7 @@ def trial(direction, scheduledtime):
 
         routes = gmaps.directions(
             start, end, mode="driving", region=config.region,
-            departure_time=datetime.now(), traffic_model="best_guess")
+            departure_time="now", traffic_model="best_guess")
         duration = routes[0]["legs"][0]["duration"]["value"]
 
         # Log timestamp, duration, scheduledtime, start, end
