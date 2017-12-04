@@ -1,0 +1,19 @@
+# systemd service file for commutebot
+# =======================
+
+[Unit]
+Description=CommuteBot commute tracker and analytics
+After=network.target
+
+[Service]
+Type=simple
+User=myuser
+WorkingDirectory=/path/to/commutebot
+ExecStart=/path/to/python3 /path/to/commutebot.py
+Restart=always
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+
+[Install]
+WantedBy=multi-user.target
