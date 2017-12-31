@@ -1,3 +1,4 @@
 googlemaps
 schedule
 peewee
+matplotlib

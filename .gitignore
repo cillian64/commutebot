@@ -102,3 +102,4 @@ ENV/
 config.py
 *.sqlite3
 commutebot.service
+*.png
