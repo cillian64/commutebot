@@ -42,7 +42,8 @@ def trial(direction, scheduledtime):
 
         # Log timestamp, duration, scheduledtime, start, end
         trial = Trial(timestamp=timestamp, duration=duration,
-                      scheduledtime=scheduledtime, start=start, end=end)
+                      scheduledtime=scheduledtime, start=start, end=end,
+                      weekday=timestamp.weekday())
         trial.save()
 
 
