@@ -14,10 +14,12 @@ def duration_against_time(start, end, times):
                          Trial.select(Trial.duration)
                          .where((Trial.start == start) &
                                 (Trial.end == end) &
-                                (Trial.scheduledtime == time))))
+                                (Trial.scheduledtime == time) &
+                                (Trial.weekday < 5))))  # Exclude weekends
     ax.boxplot(data, labels=times)
-    ax.set_title("{} to {}".format(start, end))
-    fig.savefig("{} to {}.png".format(start, end))
+    ax.set_title("{} to {}, weekdays".format(start, end))
+    plt.tight_layout()
+    fig.savefig("results/{} to {}.png".format(start, end))
 
 
 def duration_against_day(start, end, time):
@@ -31,9 +33,10 @@ def duration_against_day(start, end, time):
                                 (Trial.scheduledtime == time) &
                                 (Trial.weekday == dayidx))))
     ax.boxplot(data, labels=orm.days_of_week)
-    ax.set_title("Duration against day of week, {} to {}, {}".format(
+    ax.set_title("Duration against day of week, {} to {}, at {}".format(
         start, end, time))
-    fig.savefig("DOW {} to {} at {}.png".format(start, end, time))
+    plt.tight_layout()
+    fig.savefig("results/DOW {} to {} at {}.png".format(start, end, time))
 
 
 if __name__ == "__main__":
